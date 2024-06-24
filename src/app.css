@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 button {
-   @apply bg-red-200 rounded-full h-16 w-16;
+   @apply bg-red-200 rounded-full h-12 w-12 shadow-md;
 }
