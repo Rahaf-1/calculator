@@ -36,11 +36,17 @@
             if (answer == undefined) throw SyntaxError;
             equation = answer;
         } catch (error) {
+            equation="ERROR";
             let output = document.getElementById("output");
-            output?.classList.add("bg-red-500");
+            output?.classList.add("bg-red-400","animate-shake");
+            output?.classList.remove("bg-slate-200");
             setTimeout(() => {
-              output?.classList.remove("bg-red-500");
+              output?.classList.remove("bg-red-400","animate-shake");
+              output?.classList.add("bg-slate-200");
+              equation="";
             }, 500);
+            
+            
         }
     }
     let equation: string="";
@@ -70,8 +76,8 @@
 
 <div class= "bg-white rounded-3xl grid grid-cols-4 gap-1 p-6 text-zinc-800 font-semibold text-xl shadow-xl max-w-[16rem]">
 <div
- id="output"
- class="bg-slate-200 rounded-md col-span-4 min-h-16 flex items-center px-4 mb-3 break-all transition-all">
+id = "output"
+class="bg-slate-200 rounded-md col-span-4 min-h-16 flex items-center px-4 mb-3 break-all transition-all">
    {equation}
 </div>
 <button id="Delete" on:click={clear} class="bg-red-100 active:bg-red-200">C</button>
