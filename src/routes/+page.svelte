@@ -3,6 +3,7 @@
         الة حاسبة
     </title>
 </svelte:head>
+
 <script  lang="ts">
 	import Divison from './../lib/icons/divison.svelte';
     import Minus from "$lib/icons/minus.svelte";
@@ -24,12 +25,15 @@
             equation = equation.substring(0,equation.length-1);
         }
     }
+
     function addToEquation(value: string) {
       equation +=value;
     }
+
     function clear(){
         equation="";
     }
+
     function solve(){
         try{
             let answer = eval(equation);
@@ -45,11 +49,11 @@
               output?.classList.add("bg-slate-200");
               equation="";
             }, 500);
-            
-            
         }
     }
+
     let equation: string="";
+
     function onKeyDown(e: KeyboardEvent){
         new Audio('/click.wav').play();
         let button = document.getElementById(e.key);
@@ -75,11 +79,13 @@
     <svelte:window on:keydown|preventDefault={onKeyDown} />
 
 <div class= "bg-white rounded-3xl grid grid-cols-4 gap-1 p-6 text-zinc-800 font-semibold text-xl shadow-xl max-w-[16rem]">
+
 <div
 id = "output"
 class="bg-slate-200 rounded-md col-span-4 min-h-16 flex items-center px-4 mb-3 break-all transition-all">
    {equation}
 </div>
+
 <button id="Delete" on:click={clear} class="bg-red-100 active:bg-red-200">C</button>
 <button id="Backspace" on:click={backSpace} class="bg-red-100 active:bg-red-200">
     <Delete />
@@ -111,4 +117,5 @@ class="bg-slate-200 rounded-md col-span-4 min-h-16 flex items-center px-4 mb-3 b
 <button id="=" on:click={() =>solve()} class="bg-red-100 col-span-2 active:bg-red-200">
     <Equal />
 </button>
+
 </div>
